@@ -82,7 +82,7 @@ export default class News extends Component {
   render() {
     return (
       <div className='container my-4 '>
-        <h2 className="text-center" style={{ margin: '30px 0px' }}>KapucheNews - Top  {this.capitalizedfun(this.props.category)} Headlines</h2>
+        <h2 className="text-center" style={{ margin: '30px 0px',marginTop: '80px' }}>KapucheNews - Top  {this.capitalizedfun(this.props.category)} Headlines</h2>
        
         {/* {this.state.loading && <Spinner />} */}
 
@@ -102,12 +102,6 @@ export default class News extends Component {
         </div>
         </div>
       </InfiniteScroll>
-
-        {/* <div className="container d-flex justify-content-between">
-          <button disabled={this.state.page <= 1} type="button" className="btn btn-dark  " onClick={this.handlePreviousClick}> &larr; Preview</button>
-          <button disabled={this.state.page + 1 > Math.ceil(this.state.totalResults / this.props.pageSize)} type="button" className="btn btn-dark " onClick={this.handleNextClick}>Next &rarr;</button>
-        </div> */}
-
       </div>
     )
   }
