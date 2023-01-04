@@ -38,18 +38,22 @@ export default class News extends Component {
 
 
   async update() {
+    this.props.setProgress(10);
     if (!(this.state.page + 1 > Math.ceil(this.state.totalResults / this.props.pageSize))) {
       let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=8006c4cbde364cb794ed27d2d6cbc064&page=${this.state.page + 1}&pageSize=${this.props.pageSize}`;
      
       this.setState({ loading: true });
       let data = await fetch(url);
+      this.props.setProgress(30);
       let parsedData = await data.json();
+      this.props.setProgress(70);
       this.setState({
         articles: parsedData.articles,
         totalResults: parsedData.totalResults,
         loading: false
       })
     }
+    this.props.setProgress(100);
   }
 
 
@@ -57,20 +61,6 @@ export default class News extends Component {
      this.update();
   }
 
-  // handleNextClick = async () => {
-  //   this.update();
-  //   this.setState({
-  //     page: this.state.page + 1
-  //   });
-  // }
-  
-
-  // handlePreviousClick = async () => {
-  //   this.setState({
-  //     page: this.state.page - 1
-  //   });
-  //   this.update();
-  // }
 
   fetchMoreData = async() => {
       this.setState({page:this.state.page+1});
